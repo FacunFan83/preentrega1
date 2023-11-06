@@ -37,6 +37,12 @@ export class ProductManajer {
         return pr
     }
 
+    /**
+     * Actualiza uno o mas campos del producto
+     * @param {number} id 
+     * @param {object} prod 
+     * @returns Producto actualizado
+     */
     async updProduct(id, prod) {
         const arrayIndex = this.Products.findIndex(el => el.id === parseInt(id))
         if (arrayIndex === -1) throw new Error(`El producto con ID ${id} no existe`)
@@ -56,6 +62,10 @@ export class ProductManajer {
         return this.Products[arrayIndex]
     }
 
+    /**
+     * Elimina un producto
+     * @param {number} id 
+     */
     async delProduct(id) {
         const arrayIndex = this.Products.findIndex(el => el.id === parseInt(id))
         if (arrayIndex === -1) throw new Error(`El producto con ID ${id} no existe`)
@@ -63,10 +73,19 @@ export class ProductManajer {
         await this.#writefile()
     }
 
+    /**
+     * Devuelve todos los productos
+     * @returns {object}
+     */
     getAll() {
         return this.Products
     }
 
+    /**
+     * Devuelve un producto por ID
+     * @param {number} id 
+     * @returns {object}
+     */
     getById(id) {
         const product = this.Products.find(el => el.id === parseInt(id))
         return product

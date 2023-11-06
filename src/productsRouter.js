@@ -3,6 +3,9 @@ import { pm } from './app.js'
 
 export const productsRouter = Router()
 
+/**
+ * http://localhost:8080/api/products
+ */
 productsRouter.get('/', (req, res) => {
     const limit = req.query.limit
     let productos = pm.getAll()
@@ -10,6 +13,9 @@ productsRouter.get('/', (req, res) => {
     res.json(productos)
 })
 
+/**
+ * http://localhost:8080/api/products/11
+ */
 productsRouter.get('/:pid', (req, res) => {
     try {
         const product = pm.getById(req.params.pid)
@@ -23,7 +29,10 @@ productsRouter.get('/:pid', (req, res) => {
     }
 })
 
-// title, description, code, price, status, stock, category, thumb
+/**
+ * http://localhost:8080/api/products
+ * Recibe por Body el objeto Producto
+ */
 productsRouter.post('/', async (req, res) => {
     try {
         const { title, description, code, price, status, stock, category, thumbnails } = req.body
@@ -42,6 +51,10 @@ productsRouter.post('/', async (req, res) => {
     }
 })
 
+/**
+ * http://localhost:8080/api/products/2
+ * recibe por Body los campos a actualizar
+ */
 productsRouter.put('/:pid', async (req, res) => {
     try {
         const { pid } = req.params
@@ -60,6 +73,9 @@ productsRouter.put('/:pid', async (req, res) => {
     }
 })
 
+/**
+ * http://localhost:8080/api/products/10
+ */
 productsRouter.delete('/:pid', async (req, res) => {
     const { pid } = req.params
     try {

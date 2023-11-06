@@ -3,6 +3,9 @@ import { pm, cv } from './app.js'
 
 export const cartRouter = Router()
 
+/**
+ * http://localhost:8080/api/cart/1
+ */
 cartRouter.get('/:cid', async (req, res) => {
     try {
         const { cid } = req.params
@@ -17,6 +20,9 @@ cartRouter.get('/:cid', async (req, res) => {
     }
 })
 
+/**
+ * http://localhost:8080/api/cart/
+ */
 cartRouter.post('/', async (req, res) => {
     const { prodId } = req.body
     try {
@@ -32,6 +38,9 @@ cartRouter.post('/', async (req, res) => {
     }
 })
 
+/**
+ * http://localhost:8080/api/cart/1/product/2
+ */
 cartRouter.post('/:cid/product/:pid', async (req, res) => {
     try {
         const { cid, pid } = req.params
